@@ -1,0 +1,8 @@
+{
+  "name": "Python Flask DevContainer",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {},
+  "postCreateCommand": "pip install -r requirements.txt",
+  "forwardPorts": [5020],
+  "remoteUser": "vscode"
+}

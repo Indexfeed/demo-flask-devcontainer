@@ -1,0 +1,71 @@
+# .pre-commit-config.yaml
+repos:
+  # --- General Hooks ---
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-merge-conflict
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-yaml
+      - id: check-toml
+      - id: debug-statements
+      - id: detect-private-key
+
+  # --- Python Formatting and Linting ---
+  - repo: https://github.com/psf/black
+    rev: 24.4.2
+    hooks:
+      - id: black
+        # args: ["--line-length=88"]
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        name: isort (python)
+        args: ["--profile", "black"]
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+
+  # --- Type Checking ---
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.10.0
+    hooks:
+      - id: mypy
+
+  # --- Security Checks ---
+  # Bandit: Static analysis security linter
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.9  # Use the latest stable version
+    hooks:
+      - id: bandit
+        name: bandit (security linter)
+        # You can add arguments here to skip specific tests, e.g., args: ["-s", "B101"]
+        args: ["-r", "."] # Run recursively on all files ( Bandit handles exclusion automatically )
+
+  # pip-audit: Checks Python dependencies for known vulnerabilities
+  # NOTE: This hook performs a network request, which can be slow and may be better suited
+  # for a pre-push or CI check, but is included here as requested.
+  - repo: https://github.com/pypa/pip-audit
+    rev: v2.7.0  # Use the latest stable version
+    hooks:
+      - id: pip-audit
+        name: pip-audit (dependency scanner)
+        # Assuming you use a requirements.txt file. Adjust if you use pyproject.toml
+        args: ["-r", "requirements.txt"]
+        # If running in CI/CD, consider adding:
+        # ci:
+        #   skip: [pip-audit]
+
+  # --- Commit Message/Branch Standards ---
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v4.6.0
+    hooks:
+      - id: commitizen
+        stages: [commit-msg]
+      - id: commitizen-branch
+        stages: [pre-push]
