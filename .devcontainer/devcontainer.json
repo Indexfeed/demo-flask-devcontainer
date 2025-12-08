@@ -9,9 +9,6 @@
       "installZsh": true,
       "username": "vscode"
     },
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "18"
-    },
     "ghcr.io/devcontainers/features/aws-cli:1": {},
     "ghcr.io/devcontainers/features/git:1": {
       "version": "latest"
