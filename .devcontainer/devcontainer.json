@@ -1,8 +1,48 @@
 {
   "name": "Python Flask DevContainer",
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
-  "features": {},
-  "postCreateCommand": "pip install -r requirements.txt",
-  "forwardPorts": [5020],
-  "remoteUser": "vscode"
+  "remoteEnv": {
+    "FLASK_APP": "app/app.py"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "username": "vscode"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    },
+    "ghcr.io/devcontainers/features/aws-cli:1": {},
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "moby": false // <-- CRITICAL FIX: To avoid build failure on Debian Trixie
+    }
+  },
+  "workspaceFolder": "/workspaces/lab-py-helloworld",
+
+  "postCreateCommand": [
+    "python3 -m venv .venv",
+    ".venv/bin/pip install --no-cache-dir -r app/requirements.txt"
+  ],
+
+  "postStartCommand": "source .venv/bin/activate && flask run --host 0.0.0.0 --port 5020 &",
+
+  "forwardPorts": [
+    5020
+  ],
+
+  "extensions": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-vscode.vscode-typescript-next",
+    // ... (rest of extensions)
+  ],
+
+  "settings": {
+    "python.defaultInterpreterPath": ".venv/bin/python",
+    "python.terminal.activateEnvironment": true,
+    "editor.formatOnSave": true
+  }
 }

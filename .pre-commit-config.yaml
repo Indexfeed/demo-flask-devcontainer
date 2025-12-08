@@ -56,7 +56,7 @@ repos:
       - id: pip-audit
         name: pip-audit (dependency scanner)
         # Assuming you use a requirements.txt file. Adjust if you use pyproject.toml
-        args: ["-r", "requirements.txt"]
+        args: ["-r", "app/requirements.txt"]
         # If running in CI/CD, consider adding:
         # ci:
         #   skip: [pip-audit]
