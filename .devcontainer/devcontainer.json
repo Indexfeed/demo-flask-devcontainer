@@ -1,9 +1,13 @@
 {
   "name": "Python Flask DevContainer",
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
+
   "remoteEnv": {
-    "FLASK_APP": "app/app.py"
+    "FLASK_APP": "app/app.py",
+    "FLASK_RUN_PORT": "5020",
+    "FLASK_RUN_HOST": "0.0.0.0"
   },
+
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
       "installZsh": true,
@@ -17,28 +21,20 @@
       "moby": false
     }
   },
+
   "workspaceFolder": "/workspaces/lab-py-helloworld",
 
-  "postCreateCommand": [
-    "python3 -m venv .venv",
-    ".venv/bin/pip install --no-cache-dir -r app/requirements.txt"
-  ],
+  "postCreateCommand": "pip install --no-cache-dir -r app/requirements.txt",
 
-  "postStartCommand": "source .venv/bin/activate && flask run --host 0.0.0.0 --port 5020 &",
-
-  "forwardPorts": [
-    5020
-  ],
+  "forwardPorts": [5020],
 
   "extensions": [
     "ms-python.python",
-    "ms-python.vscode-pylance",
-    "ms-vscode.vscode-typescript-next"
+    "ms-python.vscode-pylance"
   ],
 
   "settings": {
-    "python.defaultInterpreterPath": ".venv/bin/python",
-    "python.terminal.activateEnvironment": true,
+    "python.defaultInterpreterPath": "python",
     "editor.formatOnSave": true
   }
 }
