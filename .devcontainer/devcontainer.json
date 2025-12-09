@@ -14,7 +14,7 @@
       "version": "latest"
     },
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
-      "moby": false // <-- CRITICAL FIX: To avoid build failure on Debian Trixie
+      "moby": false
     }
   },
   "workspaceFolder": "/workspaces/lab-py-helloworld",
@@ -33,8 +33,7 @@
   "extensions": [
     "ms-python.python",
     "ms-python.vscode-pylance",
-    "ms-vscode.vscode-typescript-next",
-    // ... (rest of extensions)
+    "ms-vscode.vscode-typescript-next"
   ],
 
   "settings": {
