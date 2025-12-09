@@ -22,7 +22,7 @@
     }
   },
 
-  "workspaceFolder": "/workspaces/lab-py-helloworld",
+  "workspaceFolder": "/workspaces/demo-flask-devcontainer",
 
   "postCreateCommand": "pip install --no-cache-dir -r app/requirements.txt",
 
