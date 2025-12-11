@@ -16,12 +16,14 @@
     "ghcr.io/devcontainers/features/aws-cli:1": {},
     "ghcr.io/devcontainers/features/git:1": {
       "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "moby": false
     }
   },
 
   "workspaceFolder": "/workspaces/demo-flask-devcontainer",
 
-<<<<<<< HEAD
   "postCreateCommand": "pip install --no-cache-dir -r app/requirements.txt",
 
   "forwardPorts": [5020],
@@ -38,21 +40,4 @@
       }
     }
   }
-=======
-  "postCreateCommand": [
-    "pip install -r /workspaces/demo-flask-devcontainer/app/requirements.txt"
-  ],
-
-  "postStartCommand": "flask run --host 0.0.0.0 --port 5020 &",
-
-  "forwardPorts": [
-    5020
-  ],
-
-  "extensions": [
-    "ms-python.python",
-    "ms-python.vscode-pylance",
-    "ms-vscode.vscode-typescript-next"
-  ]
->>>>>>> d2802e6 (fix: devcontainer json file)
 }
