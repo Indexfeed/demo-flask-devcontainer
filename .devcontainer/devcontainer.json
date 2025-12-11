@@ -1,6 +1,9 @@
 {
   "name": "Python Flask DevContainer",
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "mounts": [
+    "source=/etc/ssl/certs,target=/etc/ssl/certs,type=bind,readonly"
+  ],
 
   "remoteEnv": {
     "FLASK_APP": "app/app.py",
