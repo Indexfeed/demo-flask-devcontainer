@@ -8,7 +8,8 @@
   "remoteEnv": {
     "FLASK_APP": "app/app.py",
     "FLASK_RUN_PORT": "5020",
-    "FLASK_RUN_HOST": "0.0.0.0"
+    "FLASK_RUN_HOST": "0.0.0.0",
+    "CODER_AGENT_TLS_INSECURE": "true"
   },
 
   "features": {
