@@ -22,7 +22,7 @@
     }
   },
 
-  "workspaceFolder": "/workspaces/demo-flask-devcontainer",
+  "workspaceFolder": "${containerEnv:REPO_PATH:/workspaces}",
   "postCreateCommand": "pip install --no-cache-dir -r app/requirements.txt",
 
   "forwardPorts": [5020],
